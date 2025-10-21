@@ -9,12 +9,17 @@
 "preview": "vite preview"
 },
 "devDependencies": {
-"@sveltejs/adapter-static": "^3.0.3",
-"@sveltejs/kit": "^2.5.10",
-"@sveltejs/vite-plugin-svelte": "^3.0.2",
-"svelte": "^4.2.15",
-"tslib": "^2.6.2",
-"typescript": "^5.4.2",
-"vite": "^5.2.8"
+"@sveltejs/adapter-static": "3.0.3",
+"@sveltejs/kit": "2.5.10",
+"@sveltejs/vite-plugin-svelte": "3.0.2",
+"svelte": "4.2.15",
+"tslib": "2.6.2",
+"typescript": "5.4.2",
+"vite": "5.2.8"
+},
+"overrides": {
+"@sveltejs/vite-plugin-svelte": "3.0.2",
+"svelte": "4.2.15",
+"vite": "5.2.8"
 }
 }
