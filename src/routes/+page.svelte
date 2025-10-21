@@ -68,7 +68,7 @@
       <ul>
         <li>Durations adjustable in 5-minute steps (5–120 minutes)</li>
         <li>Tap-and-hold guard mirrors the in-app session sheet</li>
-        <li>Warm gradients and rounded cards echo SwiftUI styling</li>
+  <li>Calm olive gradients and rounded cards echo SwiftUI styling</li>
       </ul>
     </article>
 
@@ -129,11 +129,11 @@
 
   <section class="container">
     <h2 class="section-title">Built for the moments that matter</h2>
-    <p class="section-lead">Re:Me runs on iOS 17 and newer, embraces system fonts, and matches Apple’s design language with gentle gradients, warm highlights, and rounded corners you already use in the app.</p>
+  <p class="section-lead">Re:Me runs on iOS 17 and newer, embraces system fonts, and matches Apple’s design language with gentle gradients, serene olive highlights, and rounded corners you already use in the app.</p>
     <div class="stat-grid">
       <article class="card">
         <h3>SwiftUI on the inside</h3>
-        <p>The landing page follows the same palette as Theme.swift: warm sunrise primary (#FF8C42), accent amber (#FFB380), soft backgrounds (#FAF7F5 light / #0E0E0F dark), and calm neutrals.</p>
+  <p>The landing page follows the same Serene palette as Theme.swift: olive primary (#647254), sage accent (#A4B071), soft cream backgrounds (#FFFCF8 light / #171B18 dark), and calm neutral foregrounds (#1F2326 / #FFFCF8).</p>
       </article>
       <article class="card">
         <h3>Accessibility ready</h3>
@@ -141,7 +141,7 @@
       </article>
       <article class="card">
         <h3>Made to share</h3>
-        <p>Open Graph and Twitter cards describe Re:Me as a mindful phone companion, complete with a warm gradient social preview.</p>
+  <p>Open Graph and Twitter cards describe Re:Me as a mindful phone companion, complete with a serene olive gradient social preview.</p>
       </article>
     </div>
   </section>
