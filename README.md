@@ -1,38 +1,21 @@
-# sv
+# Re:Me Landing
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Re:Me is a mindful iOS companion that helps you take intentional breaks from your phone. This SvelteKit site mirrors the app’s calm styling and shares how commitments, Screen Time shielding, achievements, and the growing tree work.
 
-## Creating a project
+## Tech stack
+- SvelteKit 2 + Vite
+- adapter-static for Netlify (`build/` publish directory, `npm run build`)
+- System fonts, custom CSS mirroring Theme.swift
+- Two routes: `/` (landing) and `/privacy`
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
+## Local development
+```bash
+npm install
 npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
+Production build
 npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+npm run preview
+Deploying to Netlify
+Build command: npm run build
+Publish directory: build
+Site URL: https://reme.elmen.dev
