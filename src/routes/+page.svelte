@@ -1,338 +1,341 @@
-<script>
-	import Lenis from 'lenis';
-	import { onMount } from 'svelte';
-
-	const currentYear = new Date().getFullYear();
-	/** @type {import('lenis').default | null} */
-	let lenis = null;
-
-	onMount(() => {
-		const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-		if (reduceMotionQuery.matches) {
-			return;
-		}
-
-		lenis = new Lenis({
-			duration: 1.2,
-			easing: (t) => 1 - Math.pow(1 - t, 2.4),
-			smoothTouch: false,
-			wheelMultiplier: 0.9
-		});
-
-		let rafId;
-		const raf = (time) => {
-			lenis?.raf(time);
-			rafId = requestAnimationFrame(raf);
-		};
-
-		rafId = requestAnimationFrame(raf);
-
-		return () => {
-			cancelAnimationFrame(rafId);
-			lenis?.destroy();
-		};
-	});
-</script>
-
 <svelte:head>
-	<title>Re:Me — mindful phone companion</title>
+	<title>Re:Me — Intentional phone-free commitments for iPhone</title>
 	<meta
 		name="description"
-		content="Reclaim time away from your phone with Re:Me. Start mindful commitments, hush distractions with Apple’s Screen Time APIs, and level up through calming achievements as you celebrate streaks."
+		content="Choose a 15–210 minute commitment, block distracting apps and websites with Apple Screen Time, keep selected essentials available, and track reclaimed time."
 	/>
-	<meta property="og:title" content="Re:Me — mindful phone companion" />
+	<meta property="og:title" content="Re:Me — Block distractions. Reclaim your time." />
 	<meta
 		property="og:description"
-		content="Start a commitment, stay present, and let Re:Me handle distractions with gentle Screen Time shielding. Achievements, streaks, and level progress celebrate every reclaimed minute."
+		content="Intentional phone-free commitments with Screen Time protection, selected essentials, visible progress, and nearby shared starts."
 	/>
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://reme.elmen.dev" />
 	<meta property="og:image" content="https://reme.elmen.dev/social-card.svg" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Re:Me — mindful phone companion" />
+	<meta name="twitter:title" content="Re:Me — Block distractions. Reclaim your time." />
 	<meta
 		name="twitter:description"
-		content="Take intentional breaks from your phone. Re:Me blends Screen Time shielding, mindful reflections, and celebratory achievements."
+		content="Make intentional phone-free commitments while keeping the essentials you choose available."
 	/>
 	<meta name="twitter:image" content="https://reme.elmen.dev/social-card.svg" />
 	<link rel="canonical" href="https://reme.elmen.dev" />
 </svelte:head>
 
-<main class="space-y-24 lg:space-y-28">
-	<section
-		class="page-container grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24"
-		data-reveal-group
-	>
-		<div class="space-y-6" data-reveal style="--reveal-order: 0">
-			<span
-				class="inline-flex items-center gap-2 rounded-full bg-[var(--accent-soft)] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-[var(--muted)]"
-				>Mindful phone time</span
-			>
-			<h1 class="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[64px]">
-				Re:Me
-			</h1>
-			<p class="max-w-xl text-lg text-[var(--muted)]">
-				Re:Me helps you take intentional breaks from your phone. Start a commitment, hush distracting
-				apps with Apple&rsquo;s Screen Time APIs, and watch your levels and streaks grow as you reclaim
-				time.
+<main id="main-content">
+	<section class="hero site-container" aria-labelledby="hero-heading">
+		<div class="hero-copy">
+			<p class="eyebrow"><span></span> Intentional phone-free time</p>
+			<h1 id="hero-heading">Block the distractions.<br /><em>Keep the time.</em></h1>
+			<p class="hero-lede">
+				Choose a commitment, keep the individual apps and websites you need, and let Re:Me
+				protect the rest with Apple Screen Time.
 			</p>
-			<div class="flex flex-wrap gap-4">
-				<a
-					class="inline-flex items-center gap-3 rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-3 text-base font-semibold text-[var(--primary-foreground)] shadow-[var(--shadow-soft)] transition hover:bg-[var(--primary-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
-					href="https://apps.apple.com/app/idYOUR_APP_ID"
-					rel="noopener"
-					target="_blank"
-				>
-					<span class="text-2xl" aria-hidden="true"></span>
-					<span class="flex flex-col leading-tight text-left">
-						<span class="text-[0.7rem] uppercase tracking-[0.3em] text-[rgba(255,252,248,0.8)]"
-							>Download on the</span
-						>
-						<span class="text-lg">App Store</span>
-					</span>
+			<div class="hero-actions">
+				<a class="button button-primary" href="#how-it-works">
+					See how it works <span aria-hidden="true">↓</span>
 				</a>
-				<a
-					class="inline-flex items-center rounded-[var(--radius-pill)] border border-[rgba(31,35,38,0.12)] px-5 py-3 font-semibold text-[var(--primary)] transition hover:bg-[rgba(100,114,84,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] dark:border-[rgba(255,252,248,0.2)]"
-					href="/privacy"
-					>Privacy-first design</a
-				>
+				<a class="button button-secondary" href="/privacy">Privacy by design</a>
+			</div>
+			<ul class="fact-row" aria-label="Product facts">
+				<li><strong>7</strong><span>commitment modes</span></li>
+				<li><strong>15–210</strong><span>minutes</span></li>
+				<li><strong>iOS 17+</strong><span>for iPhone</span></li>
+			</ul>
+		</div>
+
+		<div class="hero-visual" aria-label="Illustrative preview of an active Re:Me commitment">
+			<div class="orbit orbit-one" aria-hidden="true"></div>
+			<div class="orbit orbit-two" aria-hidden="true"></div>
+			<div class="phone phone-hero">
+				<div class="phone-speaker" aria-hidden="true"></div>
+				<div class="phone-status"><span>9:41</span><span>● ●</span></div>
+				<div class="active-screen">
+					<div class="leaf-mark leaf-mark-small" aria-hidden="true"><span></span></div>
+					<p class="phone-kicker">Deep Work</p>
+					<h2>Find your flow.</h2>
+					<div class="timer-ring">
+						<div class="timer-inner">
+							<strong>32:14</strong>
+							<span>remaining</span>
+						</div>
+					</div>
+					<p class="shield-note"><span aria-hidden="true">◆</span> Re:Me is keeping distractions away.</p>
+					<div class="hold-control"><span>Hold to end commitment</span></div>
+				</div>
+			</div>
+
+			<div class="floating-card protection-card">
+				<span class="floating-icon">✓</span>
+				<div><strong>Commitment protected</strong><span>Selected essentials stay available</span></div>
+			</div>
+			<div class="floating-card live-card">
+				<span class="mini-progress"></span>
+				<div><strong>Live Activity</strong><span>32 min remaining</span></div>
 			</div>
 		</div>
-		<aside
-			class="space-y-4 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl"
-			aria-label="Re:Me session preview"
-			data-reveal
-			style="--reveal-order: 1"
-		>
-			<div class="flex items-center justify-between text-sm text-[var(--muted)]">
-				<span
-					class="inline-flex items-center rounded-full bg-[var(--accent-soft)] px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]"
-					>Next commitment</span
-				>
-				<span class="text-base font-semibold text-[var(--fg)]">45 min</span>
+	</section>
+
+	<section class="moments" aria-label="Commitment modes">
+		<div class="site-container moments-inner">
+			<p>One boundary. Whatever the moment asks for.</p>
+			<div class="moment-list" aria-label="Available commitment examples">
+				<span>Unplug</span><i></i><span>Deep Work</span><i></i><span>Read</span><i></i
+				><span>Walk</span><i></i><span>Rest</span><i></i><span>Be together</span>
 			</div>
-			<h2 class="text-2xl font-semibold">Unplug</h2>
-			<p class="text-[var(--muted)]">
-				Settle in, breathe, and tap start. Re:Me keeps distractions away while gaining achievements and
-				leveling up.
-			</p>
-			<ul class="list-disc space-y-2 pl-5 text-[var(--muted)]">
-				<li>Screen Time shielding: on</li>
-				<li>Press &amp; hold 3s to end early</li>
-				<li>Live Activity pinned to your Lock Screen</li>
-				<li>Level & Achievements progress.</li>
-			</ul>
-		</aside>
+		</div>
 	</section>
 
-	<section class="page-container grid gap-6 lg:grid-cols-3" aria-label="Key features" data-reveal-group>
-		<article
-			class="space-y-4 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-[var(--shadow-soft)]"
-			data-reveal
-			style="--reveal-order: 0"
-		>
-			<h3 class="text-xl font-semibold">Intentional commitments</h3>
-			<p class="text-[var(--muted)]">
-				Choose from gentle presets like Deep Work, Reset, or your own minutes. Every session starts with
-				mindful copy drawn from the app’s refreshed Home view.
-			</p>
-			<ul class="list-disc space-y-2 pl-5 text-[var(--muted)]">
-				<li>Durations adjustable in 5-minute steps (5–120 minutes)</li>
-				<li>Tap-and-hold guard mirrors the in-app session sheet</li>
-				<li>Calm olive gradients and rounded cards echo SwiftUI styling</li>
-			</ul>
-		</article>
-
-		<article
-			class="space-y-4 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-[var(--shadow-soft)]"
-			data-reveal
-			style="--reveal-order: 1"
-		>
-			<h3 class="text-xl font-semibold">Gentle Screen Time shielding</h3>
-			<p class="text-[var(--muted)]">
-				Re:Me uses Apple’s Family Controls APIs to hush the specific apps you choose. You stay in
-				control—permissions live inside Screen Time, and you can revoke them anytime.
-			</p>
-			<ul class="list-disc space-y-2 pl-5 text-[var(--muted)]">
-				<li>ShieldService only activates during active commitments</li>
-				<li>No usage analytics or personal data ever leave your device</li>
-				<li>Ending early still requires a mindful three-second hold</li>
-			</ul>
-		</article>
-
-		<article
-			class="space-y-4 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-[var(--shadow-soft)]"
-			data-reveal
-			style="--reveal-order: 2"
-		>
-			<h3 class="text-xl font-semibold">Celebrate reclaimed time</h3>
-			<p class="text-[var(--muted)]">
-				Weekly streak cards, level progress, and animated achievements celebrate steady progress. Charts
-				highlight every mindful minute you earn.
-			</p>
-			<ul class="list-disc space-y-2 pl-5 text-[var(--muted)]">
-				<li>Weekly streak + monthly calendar overview</li>
-				<li>Achievements unlock with trophy highlights and confetti</li>
-				<li>Level paths mirror session points to mark your journey</li>
-			</ul>
-		</article>
-	</section>
-
-	<section class="page-container space-y-8 text-center lg:text-left" data-reveal-group>
-		<h2 class="text-3xl font-semibold" data-reveal style="--reveal-order: 0">
-			Mindful details that keep you present
-		</h2>
-		<p class="mx-auto max-w-3xl text-lg text-[var(--muted)]" data-reveal style="--reveal-order: 1">
-			From the Live Activity countdown to gentle reflection prompts, every part of Re:Me is built to keep
-			your attention where you want it—off the phone, on the moment.
-		</p>
-		<div class="grid gap-6 lg:grid-cols-3" data-reveal-group>
-			<article
-				class="space-y-3 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-soft)]"
-				data-reveal
-				style="--reveal-order: 0"
-			>
-				<h4 class="text-lg font-semibold">Hold to finish</h4>
-				<p class="text-[var(--muted)]">
-					Ending a session mirrors the app’s Active Session view with a three-second hold. It’s a calm
-					pause that helps you confirm the intention you set.
-				</p>
+	<section class="section site-container" id="how-it-works" aria-labelledby="how-title">
+		<div class="section-heading centered">
+			<p class="eyebrow"><span></span> A commitment in four steps</p>
+			<h2 id="how-title">A little intention goes a long way.</h2>
+			<p>Make a clear choice once. Re:Me helps you stay with it.</p>
+		</div>
+		<div class="steps-grid">
+			<article class="step-card">
+				<span class="step-number">01</span>
+				<div class="step-symbol mode-symbol" aria-hidden="true"><span></span><span></span><span></span></div>
+				<h3>Choose your mode</h3>
+				<p>Start with one of seven modes for focus, reading, walking, rest, or time together.</p>
 			</article>
-			<article
-				class="space-y-3 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-soft)]"
-				data-reveal
-				style="--reveal-order: 1"
-			>
-				<h4 class="text-lg font-semibold">Reflect &amp; reset</h4>
-				<p class="text-[var(--muted)]">
-					Prompted reflections appear after finishing a commitment. Jot a note, log how you feel, or jump
-					straight into another intention.
-				</p>
+			<article class="step-card lifted">
+				<span class="step-number">02</span>
+				<div class="step-symbol essentials-symbol" aria-hidden="true"><b></b><b></b><b></b></div>
+				<h3>Keep essentials</h3>
+				<p>Choose individual apps and websites that may remain available for each mode.</p>
 			</article>
-			<article
-				class="space-y-3 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-soft)]"
-				data-reveal
-				style="--reveal-order: 2"
-			>
-				<h4 class="text-lg font-semibold">Live Activity &amp; widgets</h4>
-				<p class="text-[var(--muted)]">
-					Keep the timer visible on your Lock Screen and Dynamic Island. iOS 17 widgets and Live Activities
-					stay in sync with every second you reclaim.
-				</p>
+			<article class="step-card">
+				<span class="step-number">03</span>
+				<div class="step-symbol together-symbol" aria-hidden="true"><b></b><b></b></div>
+				<h3>Commit your way</h3>
+				<p>Set 15 to 210 minutes, then begin on your own or synchronize with people nearby.</p>
+			</article>
+			<article class="step-card lifted">
+				<span class="step-number">04</span>
+				<div class="step-symbol growth-symbol" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+				<h3>Reclaim the time</h3>
+				<p>Complete the commitment to build your streak, level, history, and achievements.</p>
 			</article>
 		</div>
 	</section>
 
-	<section class="page-container" data-reveal>
-		<div
-			class="space-y-6 rounded-[var(--radius-card)] bg-[var(--surface-secondary)] p-8 shadow-[var(--shadow-soft)]"
-			data-reveal
-		>
-			<h2 class="text-3xl font-semibold">Local-first, by design</h2>
-			<p class="text-lg text-[var(--muted)]">
-				Re:Me keeps your information on-device by default. Optional iCloud syncing is yours to enable, and it
-				lives in your own private container.
-			</p>
-			<ul class="list-disc space-y-2 pl-5 text-[var(--muted)]">
-				<li>Session history, streaks, and achievements are stored locally with SwiftData.</li>
-				<li>You can opt into iCloud backups; the developer never sees your records.</li>
-				<li>No ads, tracking SDKs, or analytics libraries—just mindful phone-free time.</li>
-			</ul>
-			<p class="text-lg text-[var(--muted)]">
-				Read the full <a class="underline" href="/privacy">privacy policy</a> for details.
-			</p>
+	<section class="section protection-section" aria-labelledby="protection-title">
+		<div class="site-container split-layout">
+			<div class="section-copy">
+				<p class="eyebrow"><span></span> Protection with room to breathe</p>
+				<h2 id="protection-title">Distractions wait.<br />Essentials don’t have to.</h2>
+				<p>
+					Re:Me uses Apple Screen Time to shield apps and websites during a protected
+					commitment. Each mode remembers the individual choices you want to keep available.
+				</p>
+				<ul class="check-list">
+					<li><span>✓</span> Different allowed choices for every mode</li>
+					<li><span>✓</span> Leave the selection empty to block everything</li>
+					<li><span>✓</span> No screen-usage reports are read</li>
+				</ul>
+				<a class="text-link" href="/privacy">How Screen Time data is handled <span>→</span></a>
+			</div>
+
+			<div class="settings-preview" aria-label="Illustrative preview of allowed apps and websites settings">
+				<div class="preview-label">Interface preview</div>
+				<div class="settings-header">
+					<span class="back-dot">‹</span>
+					<div><span>Deep Work</span><strong>Allowed essentials</strong></div>
+					<span></span>
+				</div>
+				<div class="mode-tabs">
+					<span>Unplug</span><span class="active">Deep Work</span><span>Read</span>
+				</div>
+				<div class="settings-card">
+					<div class="settings-row">
+						<span class="abstract-app olive">01</span>
+						<div><strong>Individual apps</strong><small>3 available</small></div>
+						<span class="status-pill">Allowed</span>
+					</div>
+					<div class="settings-row">
+						<span class="abstract-app peach">02</span>
+						<div><strong>Individual websites</strong><small>2 available</small></div>
+						<span class="status-pill">Allowed</span>
+					</div>
+				</div>
+				<div class="blocked-card">
+					<div class="shield-glyph" aria-hidden="true">◇</div>
+					<div><strong>Everything else waits</strong><p>While your Deep Work commitment is active.</p></div>
+				</div>
+				<p class="settings-footnote">Selections are stored for this mode on your device.</p>
+			</div>
 		</div>
 	</section>
 
-	<section class="page-container space-y-8 text-center lg:text-left" data-reveal-group>
-		<h2 class="text-3xl font-semibold" data-reveal style="--reveal-order: 0">
-			Built for the moments that matter
-		</h2>
-		<p class="mx-auto max-w-3xl text-lg text-[var(--muted)]" data-reveal style="--reveal-order: 1">
-			Re:Me runs on iOS 17 and newer, embraces system fonts, and matches Apple’s design language with gentle
-			gradients, serene olive highlights, and rounded corners you already use in the app.
-		</p>
-		<div class="grid gap-6 lg:grid-cols-3" data-reveal-group>
-			<article
-				class="space-y-3 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-soft)]"
-				data-reveal
-				style="--reveal-order: 0"
-			>
-				<h3 class="text-xl font-semibold">SwiftUI on the inside</h3>
-				<p class="text-[var(--muted)]">
-					The landing page follows the same Serene palette as Theme.swift: olive primary (#647254), sage
-					accent (#A4B071), soft cream backgrounds (#FFFCF8 light / #171B18 dark), and calm neutral
-					foregrounds (#1F2326 / #FFFCF8).
+	<section class="ambient-section" aria-labelledby="ambient-title">
+		<div class="ambient-glow" aria-hidden="true"></div>
+		<div class="site-container ambient-layout">
+			<div class="ambient-copy">
+				<p class="eyebrow light"><span></span> Present without checking in</p>
+				<h2 id="ambient-title">Your commitment stays in sight—not in the way.</h2>
+				<p>
+					Follow the time from a Live Activity, the Dynamic Island on compatible iPhones,
+					and calm Home or Lock Screen widgets.
 				</p>
-			</article>
-			<article
-				class="space-y-3 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-soft)]"
-				data-reveal
-				style="--reveal-order: 1"
-			>
-				<h3 class="text-xl font-semibold">Accessibility ready</h3>
-				<p class="text-[var(--muted)]">
-					Large, legible typography mirrors the in-app scale (titles at 24–32 px, body at 16 px) with
-					sufficient contrast in both light and dark modes.
-				</p>
-			</article>
-			<article
-				class="space-y-3 rounded-[var(--radius-card)] border border-[var(--card-border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-soft)]"
-				data-reveal
-				style="--reveal-order: 2"
-			>
-				<h3 class="text-xl font-semibold">Made to share</h3>
-				<p class="text-[var(--muted)]">
-					Open Graph and Twitter cards describe Re:Me as a mindful phone companion, complete with a serene
-					olive gradient social preview.
-				</p>
-			</article>
+				<p class="fine-print">Availability depends on compatible hardware and system settings.</p>
+			</div>
+			<div class="ambient-preview" aria-label="Illustrative Live Activity and widget previews">
+				<div class="lock-panel">
+					<div class="lock-time">09:41</div>
+					<div class="live-activity">
+						<div class="live-top"><span class="tiny-leaf"></span><strong>Deep Work</strong><span>32:14</span></div>
+						<div class="live-track"><span></span></div>
+						<p>Find your flow.</p>
+					</div>
+				</div>
+				<div class="dynamic-island">
+					<span class="island-leaf"></span><strong>32:14</strong>
+				</div>
+				<div class="home-widget">
+					<div><span class="tiny-leaf"></span><strong>Re:Me</strong></div>
+					<h3>8 day streak</h3>
+					<p>Level 7 · Calm Breeze</p>
+					<div class="week-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+				</div>
+			</div>
 		</div>
 	</section>
 
-	<section class="page-container text-center" data-reveal-group>
-		<span
-			class="inline-flex items-center gap-2 rounded-full bg-[var(--accent-soft)] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-[var(--muted)]"
-			>Ready when you are</span
-		>
-		<h2 class="mt-6 text-3xl font-semibold" data-reveal style="--reveal-order: 0">
-			Start your next phone-free commitment
-		</h2>
-		<p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--muted)]" data-reveal style="--reveal-order: 1">
-			Reclaim time for presence, creativity, and rest. Re:Me is free of ads and tracking, and it takes just a
-			moment to make your first commitment.
-		</p>
-		<div class="mt-8 flex flex-wrap justify-center gap-4" data-reveal style="--reveal-order: 2">
-			<a
-				class="inline-flex items-center gap-3 rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-3 text-base font-semibold text-[var(--primary-foreground)] shadow-[var(--shadow-soft)] transition hover:bg-[var(--primary-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
-				href="https://apps.apple.com/app/idYOUR_APP_ID"
-				rel="noopener"
-				target="_blank"
-			>
-				<span class="text-2xl" aria-hidden="true"></span>
-				<span class="flex flex-col leading-tight text-left">
-					<span class="text-[0.7rem] uppercase tracking-[0.3em] text-[rgba(255,252,248,0.8)]"
-						>Download on the</span
-					>
-					<span class="text-lg">App Store</span>
-				</span>
-			</a>
-			<a
-				class="inline-flex items-center rounded-[var(--radius-pill)] border border-[rgba(31,35,38,0.12)] px-5 py-3 font-semibold text-[var(--primary)] transition hover:bg-[rgba(100,114,84,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] dark:border-[rgba(255,252,248,0.2)]"
-				href="mailto:pierre@elmen.dev"
-				>Say hello</a
-			>
+	<section class="section site-container" id="progress" aria-labelledby="progress-title">
+		<div class="progress-layout">
+			<div class="dashboard-preview" aria-label="Illustrative dashboard with sample data">
+				<div class="preview-label">Illustrative data</div>
+				<div class="dashboard-heading"><div><span>Good morning</span><strong>Reclaim your time</strong></div><span class="round-mark">◌</span></div>
+				<div class="stat-pair">
+					<div><span>Current streak</span><strong>8 <small>days</small></strong></div>
+					<div><span>Reclaimed this week</span><strong>4h <small>35m</small></strong></div>
+				</div>
+				<div class="chart-card">
+					<div class="chart-title"><strong>This week</strong><span>275 minutes</span></div>
+					<div class="bar-chart" aria-hidden="true">
+						<div><i style="--bar: 38%"></i><span>M</span></div>
+						<div><i style="--bar: 62%"></i><span>T</span></div>
+						<div><i style="--bar: 48%"></i><span>W</span></div>
+						<div><i style="--bar: 82%"></i><span>T</span></div>
+						<div><i style="--bar: 65%"></i><span>F</span></div>
+						<div><i style="--bar: 32%"></i><span>S</span></div>
+						<div><i style="--bar: 54%"></i><span>S</span></div>
+					</div>
+				</div>
+				<div class="level-card"><span class="level-seed"></span><div><span>Level 7</span><strong>Calm Breeze</strong><i><b></b></i></div><small>78%</small></div>
+			</div>
+
+			<div class="section-copy progress-copy">
+				<p class="eyebrow"><span></span> Progress you can feel</p>
+				<h2 id="progress-title">See the time you chose for yourself.</h2>
+				<p>
+					Completed minutes become a simple record of your choices—not another feed to chase.
+					Review your week, spot consistent days, and move through nature-inspired levels.
+				</p>
+				<div class="progress-points">
+					<div><strong>51</strong><span>levels shaped by completed minutes</span></div>
+					<div><strong>33</strong><span>achievements for time and consistency</span></div>
+				</div>
+				<p class="quiet-copy">Weekly charts · Monthly calendar · Daily timeline · Current streak</p>
+			</div>
 		</div>
+	</section>
+
+	<section class="section together-section" id="together" aria-labelledby="together-title">
+		<div class="site-container together-layout">
+			<div class="section-copy">
+				<p class="eyebrow"><span></span> Me / We</p>
+				<h2 id="together-title">Make the same promise, together.</h2>
+				<p>
+					Host a nearby commitment, let friends or family join, then begin at the same moment.
+					No Re:Me account or remote group server is required.
+				</p>
+				<div class="together-notes">
+					<span><i></i> Nearby local connection</span>
+					<span><i></i> Synchronized start</span>
+					<span><i></i> History stays separate</span>
+				</div>
+				<p class="fine-print dark-copy">
+					Nearby coordination shares the display name and commitment details needed to connect
+					with other Re:Me devices nearby.
+				</p>
+			</div>
+			<div class="group-preview" aria-label="Illustrative nearby commitment lobby with fictional names">
+				<div class="preview-label">Fictional names</div>
+				<div class="group-top"><span>Start Together</span><strong>Deep Work</strong><small>45 min</small></div>
+				<div class="radar" aria-hidden="true"><i></i><i></i><i></i><span class="tinyme">R</span></div>
+				<p>3 people are ready</p>
+				<div class="people-row">
+					<div><span>Y</span><small>You</small></div>
+					<div><span>M</span><small>Mina</small></div>
+					<div><span>A</span><small>Alex</small></div>
+				</div>
+				<div class="group-button">Start commitment</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section site-container" id="privacy" aria-labelledby="privacy-title">
+		<div class="privacy-panel">
+			<div class="privacy-mark" aria-hidden="true"><span></span></div>
+			<div class="privacy-intro">
+				<p class="eyebrow light"><span></span> Local-first by design</p>
+				<h2 id="privacy-title">Your commitment is yours.</h2>
+				<p>Re:Me is useful without an account, an analytics profile, or a developer backend.</p>
+				<a class="button button-light" href="/privacy">Read the privacy policy <span>→</span></a>
+			</div>
+			<div class="privacy-facts">
+				<div><span>01</span><p><strong>Local history</strong>Completed commitment records are stored by the app on your device.</p></div>
+				<div><span>02</span><p><strong>No attention economy</strong>No analytics, advertising, or tracking SDKs are included.</p></div>
+				<div><span>03</span><p><strong>No usage reports</strong>Re:Me applies Screen Time shields without reading your screen-usage history.</p></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section faq-section site-container" aria-labelledby="faq-title">
+		<div class="section-heading centered compact">
+			<p class="eyebrow"><span></span> Good to know</p>
+			<h2 id="faq-title">Questions before you commit.</h2>
+		</div>
+		<div class="faq-list">
+			<details>
+				<summary>Does Re:Me block every app?<span aria-hidden="true">+</span></summary>
+				<p>By default, a protected commitment blocks apps and websites. You can keep individually selected apps and websites available for each commitment mode.</p>
+			</details>
+			<details>
+				<summary>Can I choose entire app categories?<span aria-hidden="true">+</span></summary>
+				<p>No. Re:Me currently supports individual apps and websites; whole-category exceptions are not applied.</p>
+			</details>
+			<details>
+				<summary>Can I end a commitment early?<span aria-hidden="true">+</span></summary>
+				<p>Yes. Inside Re:Me, ending early requires a three-second hold. The Screen Time shield also offers an end action. An early ending is not saved as a completed commitment.</p>
+			</details>
+			<details>
+				<summary>Does Re:Me read my Screen Time usage?<span aria-hidden="true">+</span></summary>
+				<p>No screen-usage reporting feature is implemented. Re:Me uses Apple’s controls to apply shields and keeps its own record of commitments you complete.</p>
+			</details>
+			<details>
+				<summary>Do I need an account or internet connection?<span aria-hidden="true">+</span></summary>
+				<p>No account is required, and solo commitments do not depend on a Re:Me server. Together mode uses local connectivity with nearby Re:Me devices.</p>
+			</details>
+			<details>
+				<summary>What if Screen Time blocking is unavailable?<span aria-hidden="true">+</span></summary>
+				<p>When blocking is technically unavailable, Re:Me can offer a clearly labelled timer-only commitment after confirmation. If permission was denied, the app asks you to restore it in Settings.</p>
+			</details>
+		</div>
+	</section>
+
+	<section class="final-cta site-container" aria-labelledby="final-title">
+		<picture>
+			<source srcset="/images/reme-icon-dark.png" media="(prefers-color-scheme: dark)" />
+			<img src="/images/reme-icon-light.png" alt="" width="88" height="88" />
+		</picture>
+		<div>
+			<p class="eyebrow"><span></span> Ready when you are</p>
+			<h2 id="final-title">Make time for what’s in front of you.</h2>
+			<p>Release details will appear here once a public App Store destination is available.</p>
+		</div>
+		<a class="button button-primary" href="/support">Get in touch <span aria-hidden="true">→</span></a>
 	</section>
 </main>
-
-<footer class="border-t border-[rgba(31,35,38,0.08)] py-8 dark:border-[rgba(255,252,248,0.12)]">
-	<div class="page-container flex flex-col gap-4 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
-		<span>&copy; {currentYear} Re:Me. Built with calm intention by Pierre Elmen.</span>
-		<nav class="flex flex-wrap gap-6">
-			<a class="transition hover:text-[var(--fg)]" href="/privacy">Privacy Policy</a>
-			<a class="transition hover:text-[var(--fg)]" href="mailto:pierre@elmen.dev">pierre@elmen.dev</a>
-		</nav>
-	</div>
-</footer>

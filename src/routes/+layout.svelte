@@ -1,79 +1,54 @@
 <script lang="ts">
-  import '../app.css';
-  import Lenis from 'lenis';
-  import { onDestroy, onMount } from 'svelte';
+	import '../app.css';
 
-  let lenis = null;
-  let rafId = null;
-
-  export const disableSmoothScroll = () => lenis?.stop();
-  export const enableSmoothScroll = () => lenis?.start();
-
-  const setupLenis = () => {
-    lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true
-    });
-
-    const raf = (time) => {
-      lenis?.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-
-    rafId = requestAnimationFrame(raf);
-  };
-
-  const teardownLenis = () => {
-    lenis?.destroy();
-    lenis = null;
-
-    if (rafId !== null) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-    }
-  };
-
-  onMount(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    setupLenis();
-  });
-
-  onDestroy(() => {
-    teardownLenis();
-  });
+	const currentYear = new Date().getFullYear();
 </script>
 
-<header class="header-surface sticky top-0 z-40 backdrop-blur-2xl">
-  <div class="page-container flex min-h-16 flex-wrap items-center justify-between gap-3 py-4">
-    <a class="text-lg font-bold uppercase tracking-[0.18em] text-[var(--fg)]" href="/">Re:Me</a>
-    <nav class="flex items-center gap-4 text-sm font-semibold" aria-label="Primary">
-      <a
-        class="rounded-full px-3 py-2 text-[var(--fg)] transition hover:bg-[rgba(100,114,84,0.12)] hover:text-[var(--primary-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
-        href="/"
-        >Home</a
-      >
-      <a
-        class="rounded-full px-3 py-2 text-[var(--fg)] transition hover:bg-[rgba(100,114,84,0.12)] hover:text-[var(--primary-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
-        href="https://apps.apple.com/app/idYOUR_APP_ID"
-        rel="noopener"
-        target="_blank"
-        >Download</a
-      >
-      <a
-        class="rounded-full px-3 py-2 text-[var(--fg)] transition hover:bg-[rgba(100,114,84,0.12)] hover:text-[var(--primary-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
-        href="mailto:pierre@elmen.dev"
-        >Contact</a
-      >
-    </nav>
-  </div>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+	<div class="site-container header-inner">
+		<a class="brand" href="/" aria-label="Re:Me home">
+			<picture>
+				<source srcset="/images/reme-icon-dark.png" media="(prefers-color-scheme: dark)" />
+				<img src="/images/reme-icon-light.png" alt="" width="36" height="36" />
+			</picture>
+			<span>Re:Me</span>
+		</a>
+
+		<nav class="site-nav" aria-label="Primary navigation">
+			<a href="/#how-it-works">How it works</a>
+			<a href="/#progress">Progress</a>
+			<a href="/#together">Together</a>
+			<a href="/privacy">Privacy</a>
+			<a class="nav-cta" href="/support">Support</a>
+		</nav>
+	</div>
 </header>
 
 <slot />
+
+<footer class="site-footer">
+	<div class="site-container footer-grid">
+		<div>
+			<a class="brand footer-brand" href="/" aria-label="Re:Me home">
+				<picture>
+					<source srcset="/images/reme-icon-dark.png" media="(prefers-color-scheme: dark)" />
+					<img src="/images/reme-icon-light.png" alt="" width="36" height="36" />
+				</picture>
+				<span>Re:Me</span>
+			</a>
+			<p>Make time for what’s in front of you.</p>
+		</div>
+		<div class="footer-links" aria-label="Footer navigation">
+			<a href="/#how-it-works">How it works</a>
+			<a href="/#together">Together</a>
+			<a href="/privacy">Privacy</a>
+			<a href="/support">Support</a>
+		</div>
+	</div>
+	<div class="site-container footer-meta">
+		<span>© {currentYear} Re:Me</span>
+		<span>Built by Pierre Elmen</span>
+	</div>
+</footer>

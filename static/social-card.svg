@@ -1,37 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <desc>Re:Me social card with warm gradient background and mindful copy.</desc>
+  <title>Re:Me — Block distractions. Reclaim your time.</title>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFB380" />
-      <stop offset="45%" stop-color="#FF8C42" />
-      <stop offset="100%" stop-color="#0E0E0F" />
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D4C6AB" stop-opacity=".48"/>
+      <stop offset=".55" stop-color="#FFFDF8" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.94" />
-      <stop offset="100%" stop-color="#FFE5D4" stop-opacity="0.85" />
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="rgba(15,15,16,0.25)" />
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#1F2326" flood-opacity=".14"/>
     </filter>
   </defs>
-  <rect width="1200" height="630" fill="#0E0E0F" />
-  <rect width="1200" height="630" fill="url(#bg)" opacity="0.94" />
-  <g filter="url(#shadow)">
-    <rect x="120" y="140" width="520" height="360" rx="40" fill="url(#card)" stroke="rgba(45,45,45,0.08)" stroke-width="2" />
-    <text x="170" y="240" font-family="SF Pro Display, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="74" font-weight="700" fill="#2D2D2D">Re:Me</text>
-    <text x="170" y="320" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" fill="#7A7A7A">Reclaim your time. Stay present. Grow your tree.</text>
-    <g transform="translate(170 360)" fill="#FF8C42">
-      <rect x="0" y="40" width="180" height="4" rx="2" opacity="0.25" />
-      <path d="M84 92c0-30 12-50 36-60-8 22-6 38 8 48-12-4-22-2-28 6 4 10 10 18 18 24-20-4-32-12-34-18z" fill="#FF8C42" opacity="0.7" />
-      <path d="M98 95c-2-22 6-42 26-58-6 20-4 34 6 44-10-4-18-2-22 4 4 8 8 14 14 18-16-2-24-8-24-8z" fill="#FFB380" opacity="0.85" />
-      <rect x="110" y="88" width="8" height="36" rx="4" fill="#855439" />
-    </g>
+  <rect width="1200" height="630" fill="#FFFDF8"/>
+  <rect width="1200" height="630" fill="url(#warm)"/>
+  <circle cx="1000" cy="90" r="250" fill="none" stroke="#7D8467" stroke-opacity=".18"/>
+  <circle cx="1000" cy="90" r="174" fill="none" stroke="#7D8467" stroke-opacity=".18" stroke-dasharray="8 12"/>
+
+  <g transform="translate(84 72)">
+    <rect width="62" height="62" rx="15" fill="#FFFFFF" filter="url(#shadow)"/>
+    <path d="M20 10c11-4 17 4 29 0-6 7-4 13-7 18-5 8-14 11-22 6 1-9 7-16 17-20-9 2-16 7-22 15-3-7-1-14 5-19Z" fill="#59633F"/>
+    <path d="M20 40c8-5 19-4 24 3s2 14-7 16c-10 2-20-1-22-8-1-4 1-8 5-11Z" fill="#472B2D"/>
+    <path d="M24 40c8 1 14 7 15 16" fill="none" stroke="#FFFDF8" stroke-width="1.7"/>
   </g>
-  <text x="760" y="270" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" fill="#FFFFFF" opacity="0.94">Mindful phone companion</text>
-  <text x="760" y="320" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" fill="#FFFFFF" opacity="0.82">
-    Commit to intentional breaks, let Screen Time shielding hush distractions, and celebrate weekly streaks and achievements.
-  </text>
-  <text x="760" y="380" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" fill="#FFFFFF" opacity="0.82">
-    Local-first by default. Optional iCloud backup. No ads, no tracking—just presence.
-  </text>
+  <text x="166" y="115" fill="#1F2326" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">Re:Me</text>
+
+  <text x="84" y="252" fill="#1F2326" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="650" letter-spacing="-4">Block the distractions.</text>
+  <text x="84" y="329" fill="#59633F" font-family="Inter, Arial, sans-serif" font-size="70" font-style="italic" font-weight="560" letter-spacing="-4">Reclaim your time.</text>
+  <text x="88" y="396" fill="#686A67" font-family="Inter, Arial, sans-serif" font-size="24">Intentional phone-free commitments, protected by Screen Time.</text>
+
+  <g transform="translate(835 95) rotate(3)" filter="url(#shadow)">
+    <rect width="270" height="500" rx="45" fill="#181B1D"/>
+    <rect x="7" y="7" width="256" height="486" rx="38" fill="#FFFDF8"/>
+    <rect x="91" y="16" width="88" height="24" rx="14" fill="#181B1D"/>
+    <text x="135" y="96" text-anchor="middle" fill="#59633F" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">DEEP WORK</text>
+    <text x="135" y="128" text-anchor="middle" fill="#1F2326" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600">Find your flow.</text>
+    <circle cx="135" cy="264" r="85" fill="none" stroke="#E2E7CE" stroke-width="20"/>
+    <path d="M135 179a85 85 0 1 1-54 151" fill="none" stroke="#59633F" stroke-width="20" stroke-linecap="round"/>
+    <text x="135" y="270" text-anchor="middle" fill="#1F2326" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="650">32:14</text>
+    <text x="135" y="292" text-anchor="middle" fill="#686A67" font-family="Inter, Arial, sans-serif" font-size="9" letter-spacing="1.5">REMAINING</text>
+    <rect x="29" y="422" width="212" height="43" rx="13" fill="none" stroke="#D4183D" stroke-opacity=".35"/>
+    <text x="135" y="449" text-anchor="middle" fill="#D4183D" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600">Hold to end commitment</text>
+  </g>
+
+  <g transform="translate(87 480)">
+    <rect width="158" height="48" rx="15" fill="#59633F"/>
+    <text x="79" y="30" text-anchor="middle" fill="#FFFDF8" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="650">7 modes</text>
+    <rect x="170" width="184" height="48" rx="15" fill="#FFFFFF" stroke="#7D8467" stroke-opacity=".3"/>
+    <text x="262" y="30" text-anchor="middle" fill="#1F2326" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="650">15–210 minutes</text>
+    <rect x="366" width="144" height="48" rx="15" fill="#FFFFFF" stroke="#7D8467" stroke-opacity=".3"/>
+    <text x="438" y="30" text-anchor="middle" fill="#1F2326" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="650">iOS 17+</text>
+  </g>
 </svg>

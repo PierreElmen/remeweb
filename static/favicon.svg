@@ -1,19 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="g" cx="50%" cy="20%" r="80%">
-      <stop offset="0%" stop-color="#FFB380" />
-      <stop offset="100%" stop-color="#FF8C42" />
-    </radialGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="url(#g)" />
-  <circle cx="32" cy="38" r="14" fill="#FFFFFF" opacity="0.18" />
-  <text
-    x="32"
-    y="39"
-    text-anchor="middle"
-    font-family="SF Pro Display, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    font-size="26"
-    font-weight="600"
-    fill="#FFFFFF"
-  >R</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#FFFDF8"/>
+  <path d="M19 9c12-5 19 4 31 0-6 7-4 13-7 19-5 9-15 12-23 7 1-10 7-17 18-22-10 2-18 8-24 16-4-8-2-16 5-20Z" fill="#59633F"/>
+  <path d="M18 42c8-6 21-5 27 3 6 8 3 15-7 17-11 3-23-1-25-9-1-4 1-8 5-11Z" fill="#472B2D"/>
+  <path d="M23 42c9 1 16 8 17 17" fill="none" stroke="#FFFDF8" stroke-width="2"/>
 </svg>
